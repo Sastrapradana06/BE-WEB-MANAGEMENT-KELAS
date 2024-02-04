@@ -17,6 +17,18 @@ model User {
   password      String  
 }
 
+model Siswa {
+  id                  Int     @id @default(autoincrement())
+  image               String
+  username            String
+  tanggal_lahir       String
+  email               String  @unique
+  notel               Int
+  jabatan             String
+  nama_ortu           String
+  alamat              String  
+}
+
 
 
 

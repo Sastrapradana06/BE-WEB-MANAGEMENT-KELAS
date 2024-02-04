@@ -9,6 +9,8 @@ const prisma = require('./libs/prisma');
 const prisma2 = new PrismaClient();
 const cors = require('cors');
 
+// routes
+const siswaRoute = require('./routes/siswaRoute')
 
 app.use(express.json());
 app.use(cors());
@@ -46,9 +48,7 @@ app.post('/auth/login', async (req, res) => {
   }
 });
 
-app.post('/tes', async (req, res) => {
-  
-})
+app.use('/siswa', siswaRoute)
 
 
 
