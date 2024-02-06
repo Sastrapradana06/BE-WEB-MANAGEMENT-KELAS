@@ -23,7 +23,7 @@ model Siswa {
   username            String
   tanggal_lahir       String
   email               String  @unique
-  notel               Int
+  notel               String
   jabatan             String
   nama_ortu           String
   alamat              String  

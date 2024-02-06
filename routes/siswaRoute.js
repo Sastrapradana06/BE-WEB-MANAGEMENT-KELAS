@@ -20,7 +20,7 @@ router.post('/add', async (req, res) => {
             username, 
             tanggal_lahir, 
             email, 
-            notel: parseInt(notel), 
+            notel, 
             jabatan, nama_ortu, 
             alamat
         }
@@ -41,7 +41,7 @@ router.get('/get', async (req, res) => {
   try {
     const siswa = await prisma.siswa.findMany();
     res.status(201).json({ status: true, message: 'Semua Data Siswa', data: siswa})
-    console.log({siswa});
+    // console.log({siswa});
   } catch (error) {
     console.log(error);
     res.status(500).json({ status: false, message: 'Maaf, Terjadi Kesalahan Teknis' });
