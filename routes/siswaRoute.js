@@ -3,7 +3,7 @@ const router = express.Router();
 const prisma = require('../libs/prisma')
 
 router.post('/add', async (req, res) => {
-  const {idUbah, image, username, tanggal_lahir, email, notel, jabatan, nama_ortu, alamat} = req.body
+  const {idUbah, image, username, tanggal_lahir, email, notel, jabatan, nama_ortu, alamat, jekel} = req.body
 
   try {
     if(idUbah) {
@@ -11,9 +11,10 @@ router.post('/add', async (req, res) => {
         where: {
           id: idUbah
         },
-        data: {image, username, tanggal_lahir, email, notel, jabatan, nama_ortu, alamat}
+        data: {image, username, tanggal_lahir, email, notel, jabatan, nama_ortu, alamat, jekel}
       });
-      res.status(201).json({ status: true, message: '🚀 Siswa Berhasil Diubah'})
+      const siswa = await prisma.siswa.findMany();
+      res.status(201).json({ status: true, message: '✨ Siswa Berhasil Diubah', data:siswa})
     } else {
       const siswaByEmail = await prisma.siswa.findUnique({
         where: {
@@ -30,10 +31,12 @@ router.post('/add', async (req, res) => {
               email, 
               notel, 
               jabatan, nama_ortu, 
-              alamat
+              alamat,
+              jekel
           }
         });
-        res.status(201).json({ status: true, message: '🚀 Siswa Berhasil Ditambah'})
+        const siswa = await prisma.siswa.findMany();
+        res.status(201).json({ status: true, message: '🚀 Siswa Berhasil Ditambah', data: siswa})
   
       } else {
         res.status(404).json({ status: false, message: 'Email Sudah Digunakan' });
@@ -80,8 +83,8 @@ router.get('/delete/:id', async (req, res) => {
         id: parseInt(id)
       }
     });
-
-    res.status(201).json({ status: true, message: `🚀 ${siswaDelete.username} Berhasil DiHapus`})
+    const siswa = await prisma.siswa.findMany();
+    res.status(201).json({ status: true, message: `${siswaDelete.username} Berhasil DiHapus`, data: siswa})
   } catch (error) {
     console.log(error);
     res.status(500).json({ status: false, message: 'Maaf, Terjadi Kesalahan Teknis' });

@@ -27,6 +27,7 @@ model Siswa {
   jabatan             String
   nama_ortu           String
   alamat              String  
+  jekel               String  
 }
 
 
