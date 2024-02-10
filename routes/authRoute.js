@@ -28,4 +28,25 @@ router.post('/login', async (req, res) => {
   }
 })
 
+router.get('/get-user/:id', async (req, res) => {
+  const siswaId = req.params.id;
+  try {
+    const siswa = await prisma.siswa.findUnique({
+      where: {
+        id: parseInt(siswaId)
+      }
+    });
+
+    if(siswa) {
+      res.status(201).json({ status: true, message: 'User Login', data: siswa})
+    } else {
+      res.status(404).json({ status: false, message: 'User Login', data: null})
+    }
+
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ status: false, message: 'Maaf, Terjadi Kesalahan Teknis' });
+  }
+})
+
 module.exports = router;
