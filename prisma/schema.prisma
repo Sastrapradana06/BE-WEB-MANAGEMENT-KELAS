@@ -10,26 +10,21 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id            Int     @id @default(autoincrement())
-  username      String
-  email         String  @unique
-  password      String  
+model Authentication {
+  id       Int    @id @default(autoincrement())
+  jabatan  String
+  password String
 }
 
 model Siswa {
-  id                  Int     @id @default(autoincrement())
-  image               String
-  username            String
-  tanggal_lahir       String
-  email               String  @unique
-  notel               String
-  jabatan             String
-  nama_ortu           String
-  alamat              String  
-  jekel               String  
+  id            Int    @id @default(autoincrement())
+  image         String
+  username      String
+  tanggal_lahir String
+  email         String @unique
+  notel         String
+  jabatan       String
+  nama_ortu     String
+  alamat        String
+  jekel         String
 }
-
-
-
-

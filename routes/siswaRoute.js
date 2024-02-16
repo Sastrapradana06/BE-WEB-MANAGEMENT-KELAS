@@ -23,9 +23,10 @@ router.post('/add', async (req, res) => {
       })
       
       if(!siswaByEmail) {
+        const imgUser = image == '' ? (jekel === 'laki-laki' ? '/men-user.jfif' : '/women.jfif') : image;
         await prisma.siswa.create({
           data: {
-              image, 
+              image: imgUser,
               username, 
               tanggal_lahir, 
               email, 
