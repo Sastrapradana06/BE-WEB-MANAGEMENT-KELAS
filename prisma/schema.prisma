@@ -28,3 +28,12 @@ model Siswa {
   alamat        String
   jekel         String
 }
+
+model Guru {
+  id        Int    @id @default(autoincrement())
+  image     String
+  nama_guru String
+  jekel     String
+  mapel     String
+  jadwal    String
+}

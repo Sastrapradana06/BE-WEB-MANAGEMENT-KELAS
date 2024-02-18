@@ -5,4 +5,5 @@
 
 */
 -- AlterTable
-ALTER TABLE `siswa` ADD COLUMN `username` VARCHAR(191) NOT NULL 'unknown';
+ALTER TABLE `siswa` ADD COLUMN `username` VARCHAR(191) NOT NULL DEFAULT 'unknown';
+
