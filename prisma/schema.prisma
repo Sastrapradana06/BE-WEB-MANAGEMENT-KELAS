@@ -37,3 +37,11 @@ model Guru {
   mapel     String
   jadwal    String
 }
+
+model Mapel {
+  id        Int    @id @default(autoincrement())
+  mapel     String
+  jam       String
+  hari      String
+  nama_guru String
+}
