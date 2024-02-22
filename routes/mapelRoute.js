@@ -56,5 +56,23 @@ router.get('/get-mapel/:id', async (req, res) => {
   }
 })
 
+router.get('/delete-mapel/:id', async (req, res) => {
+  const id = req.params.id;
+  try {
+    const mapelDelete = await prisma.mapel.delete({
+      where: {
+        id: parseInt(id)
+      }
+    });
+    const mapel = await prisma.mapel.findMany();
+    res.status(201).json({ status: true, message: `${mapelDelete.mapel} Berhasil DiHapus`, data: mapel})
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ status: false, message: 'Maaf, Terjadi Kesalahan Teknis' });
+  } finally {
+    await prisma.$disconnect();
+  }
+})
+
 
 module.exports = router;
