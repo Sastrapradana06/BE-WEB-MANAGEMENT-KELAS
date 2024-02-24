@@ -37,6 +37,14 @@ router.post('/add', async (req, res) => {
           }
         });
         const siswa = await prisma.siswa.findMany();
+        await prisma.dataKelas.update({
+          where : {
+            id: 1
+          },
+          data: {
+            jumlah_siswa: siswa.length,
+          },
+        })
         res.status(201).json({ status: true, message: '🚀 Siswa Berhasil Ditambah', data: siswa})
   
       } else {
@@ -85,6 +93,14 @@ router.get('/delete/:id', async (req, res) => {
       }
     });
     const siswa = await prisma.siswa.findMany();
+    await prisma.dataKelas.update({
+      where : {
+        id: 1
+      },
+      data: {
+        jumlah_siswa: siswa.length,
+      },
+    })
     res.status(201).json({ status: true, message: `${siswaDelete.username} Berhasil DiHapus`, data: siswa})
   } catch (error) {
     console.log(error);

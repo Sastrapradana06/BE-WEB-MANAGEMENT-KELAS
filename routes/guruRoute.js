@@ -27,6 +27,14 @@ router.post('/add-guru', async (req, res) => {
         }
       });
       const data = await prisma.guru.findMany();
+      await prisma.dataKelas.update({
+        where : {
+          id: 1
+        },
+        data: {
+          jumlah_guru: data.length,
+        },
+      })
       res.status(201).json({ status: true, message: '🚀 Guru Berhasil Ditambah', data})
     }
   } catch (error) {
@@ -70,6 +78,14 @@ router.get('/delete-guru/:id', async (req, res) => {
       }
     });
     const guru = await prisma.guru.findMany();
+    await prisma.dataKelas.update({
+      where : {
+        id: 1
+      },
+      data: {
+        jumlah_guru: guru.length,
+      },
+    })
     res.status(201).json({ status: true, message: `${guruDelete.nama_guru} Berhasil DiHapus`, data: guru})
   } catch (error) {
     console.log(error);

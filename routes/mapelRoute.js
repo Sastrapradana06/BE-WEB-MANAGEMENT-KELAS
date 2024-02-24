@@ -22,6 +22,14 @@ router.post('/add-mapel', async (req, res) => {
       });
 
       const data = await prisma.mapel.findMany();
+      await prisma.dataKelas.update({
+        where : {
+          id: 1
+        },
+        data: {
+          jumlah_mapel: data.length,
+        },
+      })
       res.status(201).json({ status: true, message: '🚀 Mapel Berhasil Ditambah', data})
     }
   } catch (error) {
@@ -65,6 +73,14 @@ router.get('/delete-mapel/:id', async (req, res) => {
       }
     });
     const mapel = await prisma.mapel.findMany();
+    await prisma.dataKelas.update({
+      where : {
+        id: 1
+      },
+      data: {
+        jumlah_mapel: mapel.length,
+      },
+    })
     res.status(201).json({ status: true, message: `${mapelDelete.mapel} Berhasil DiHapus`, data: mapel})
   } catch (error) {
     console.log(error);
