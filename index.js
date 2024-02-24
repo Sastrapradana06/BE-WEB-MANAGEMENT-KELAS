@@ -8,6 +8,7 @@ const authRoute = require('./routes/authRoute')
 const siswaRoute = require('./routes/siswaRoute')
 const guruRoute = require('./routes/guruRoute')
 const mapelRoute = require('./routes/mapelRoute')
+const transaksiRoute = require('./routes/transaksiRoute')
 
 app.use(express.json());
 app.use(cors());
@@ -20,6 +21,7 @@ app.use('/auth', authRoute)
 app.use('/siswa', siswaRoute)
 app.use('/guru', guruRoute)
 app.use('/mapel', mapelRoute)
+app.use('/transaksi', transaksiRoute)
 
 
 

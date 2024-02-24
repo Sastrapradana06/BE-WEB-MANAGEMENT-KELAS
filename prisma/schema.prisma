@@ -45,3 +45,19 @@ model Mapel {
   hari      String
   nama_guru String
 }
+
+model Kas {
+  id      Int    @id @default(autoincrement())
+  jumlah  Int
+  status  String
+  user    String
+  tanggal String
+}
+
+model DataKelas {
+  id           Int @id @default(autoincrement())
+  saldo_kas    Int
+  jumlah_siswa Int
+  jumlah_guru  Int
+  jumlah_mapel Int
+}
