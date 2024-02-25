@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const prisma = require('../libs/prisma')
+// const prisma = require('../libs/prisma')
+const { PrismaClient } = require('@prisma/client');
+const prisma = new PrismaClient();
 
 router.post('/add-guru', async (req, res) => {
   const {idUbah, image, nama_guru, jekel, mapel, jadwal} = req.body
