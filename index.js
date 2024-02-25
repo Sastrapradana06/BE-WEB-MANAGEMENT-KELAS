@@ -23,8 +23,6 @@ app.use('/guru', guruRoute)
 app.use('/mapel', mapelRoute)
 app.use('/transaksi', transaksiRoute)
 
-
-
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
