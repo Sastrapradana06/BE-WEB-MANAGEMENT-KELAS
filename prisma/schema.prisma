@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -10,26 +7,21 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Authentication {
+model authentication {
   id       Int    @id @default(autoincrement())
   jabatan  String
   password String
 }
 
-model Siswa {
-  id            Int    @id @default(autoincrement())
-  image         String
-  username      String
-  tanggal_lahir String
-  email         String @unique
-  notel         String
-  jabatan       String
-  nama_ortu     String
-  alamat        String
-  jekel         String
+model datakelas {
+  id           Int @id @default(autoincrement())
+  saldo_kas    Int
+  jumlah_siswa Int
+  jumlah_guru  Int
+  jumlah_mapel Int
 }
 
-model Guru {
+model guru {
   id        Int    @id @default(autoincrement())
   image     String
   nama_guru String
@@ -38,15 +30,7 @@ model Guru {
   jadwal    String
 }
 
-model Mapel {
-  id        Int    @id @default(autoincrement())
-  mapel     String
-  jam       String
-  hari      String
-  nama_guru String
-}
-
-model Kas {
+model kas {
   id      Int    @id @default(autoincrement())
   jumlah  Int
   status  String
@@ -54,10 +38,23 @@ model Kas {
   tanggal String
 }
 
-model DataKelas {
-  id           Int @id @default(autoincrement())
-  saldo_kas    Int
-  jumlah_siswa Int
-  jumlah_guru  Int
-  jumlah_mapel Int
+model mapel {
+  id        Int    @id @default(autoincrement())
+  mapel     String
+  jam       String
+  hari      String
+  nama_guru String
+}
+
+model siswa {
+  id            Int    @id @default(autoincrement())
+  image         String
+  tanggal_lahir String
+  email         String @unique(map: "Siswa_email_key")
+  notel         String
+  jabatan       String
+  nama_ortu     String
+  alamat        String
+  jekel         String
+  username      String
 }
