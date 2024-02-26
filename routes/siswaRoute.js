@@ -55,6 +55,8 @@ router.post('/add', async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(500).json({ status: false, message: 'Maaf, Terjadi Kesalahan Teknis' });
+  } finally {
+    await prisma.$disconnect();
   }
 })
 
@@ -65,6 +67,8 @@ router.get('/get', async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(500).json({ status: false, message: 'Maaf, Terjadi Kesalahan Teknis' });
+  } finally {
+    await prisma.$disconnect();
   }
 })
 
@@ -81,6 +85,8 @@ router.get('/get-siswa/:id', async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(500).json({ status: false, message: 'Maaf, Terjadi Kesalahan Teknis' });
+  } finally {
+    await prisma.$disconnect();
   }
 })
 

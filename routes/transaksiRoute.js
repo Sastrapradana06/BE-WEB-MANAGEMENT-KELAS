@@ -80,6 +80,8 @@ router.post('/add-kas', async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(500).json({ status: false, message: 'Maaf, Terjadi Kesalahan Teknis' });
+  } finally {
+    await prisma.$disconnect();
   }
 })
 
@@ -90,6 +92,8 @@ router.get('/get-kas', async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(500).json({ status: false, message: 'Maaf, Terjadi Kesalahan Teknis' });
+  } finally {
+    await prisma.$disconnect();
   }
 })
 
@@ -106,6 +110,8 @@ router.get('/get-kas/:id', async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(500).json({ status: false, message: 'Maaf, Terjadi Kesalahan Teknis' });
+  } finally {
+    await prisma.$disconnect();
   }
 })
 
@@ -155,6 +161,8 @@ router.get('/get-dataKelas', async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(500).json({ status: false, message: 'Maaf, Terjadi Kesalahan Teknis' });
+  }  finally {
+    await prisma.$disconnect();
   }
 })
 

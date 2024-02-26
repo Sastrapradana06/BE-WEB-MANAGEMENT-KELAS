@@ -40,6 +40,8 @@ router.post('/add-guru', async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(500).json({ status: false, message: 'Maaf, Terjadi Kesalahan Teknis' });
+  } finally {
+    await prisma.$disconnect();
   }
 })
 
@@ -50,6 +52,8 @@ router.get('/get-guru', async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(500).json({ status: false, message: 'Maaf, Terjadi Kesalahan Teknis' });
+  } finally {
+    await prisma.$disconnect();
   }
 })
 
@@ -66,6 +70,8 @@ router.get('/get-guru/:id', async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(500).json({ status: false, message: 'Maaf, Terjadi Kesalahan Teknis' });
+  } finally {
+    await prisma.$disconnect();
   }
 })
 

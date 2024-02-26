@@ -35,6 +35,8 @@ router.post('/add-mapel', async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(500).json({ status: false, message: 'Maaf, Terjadi Kesalahan Teknis' });
+  } finally {
+    await prisma.$disconnect();
   }
 })
 
@@ -45,6 +47,8 @@ router.get('/get-mapel', async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(500).json({ status: false, message: 'Maaf, Terjadi Kesalahan Teknis' });
+  } finally {
+    await prisma.$disconnect();
   }
 })
 
@@ -61,6 +65,8 @@ router.get('/get-mapel/:id', async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(500).json({ status: false, message: 'Maaf, Terjadi Kesalahan Teknis' });
+  } finally {
+    await prisma.$disconnect();
   }
 })
 
